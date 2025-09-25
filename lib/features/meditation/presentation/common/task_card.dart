@@ -4,32 +4,41 @@ class TaskCard extends StatelessWidget {
   final Color color;
   final String text;
   final String discription;
-  final String image;
-  final IconData iconData;
-  final String iconText;
+  final Widget image;
+
+  final Widget iconText;
+  final Widget icon;
   const TaskCard({
     super.key,
     required this.color,
     required this.text,
     required this.discription,
     required this.image,
-    required this.iconData,
     required this.iconText,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(8),
-      width: 380,
+      padding: EdgeInsets.all(16),
+      width: screenWidth * 0.90,
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: color,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text, style: Theme.of(context).textTheme.titleMedium),
+          Text(
+            text,
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+          ),
+          //discription and image
           Row(
             children: [
               Expanded(
@@ -38,17 +47,13 @@ class TaskCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
-              Image.asset(image, height: 80, width: 80),
+              SizedBox(width: 10),
+              image,
             ],
           ),
-
-          Row(
-            children: [
-              Text(iconText, style: Theme.of(context).textTheme.labelMedium),
-              SizedBox(width: 3),
-              Icon(iconData, color: Color.lerp(color, Colors.black, 0.3)),
-            ],
-          ),
+          SizedBox(height: 8),
+          Row(children: [iconText, SizedBox(width: 10), icon]),
+          SizedBox(height: 8),
         ],
       ),
     );
