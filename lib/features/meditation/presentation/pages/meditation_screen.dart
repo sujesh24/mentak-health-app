@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/theme.dart';
 import 'package:mental_health_app/features/meditation/presentation/widgets/feeling_card.dart';
+import 'package:mental_health_app/features/meditation/presentation/widgets/task_card.dart';
 
 class MeditationScreen extends StatelessWidget {
   const MeditationScreen({super.key});
@@ -66,6 +67,21 @@ class MeditationScreen extends StatelessWidget {
                     label: 'Focus',
                   ),
                 ],
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Today’s Task',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              //task card
+              TaskCard(
+                color: DefaultColors.task1,
+                text: 'Peer Group Meetup',
+                discription:
+                    'Let’s open up to the  thing that matters amoung the people ',
+                image: 'assets/images/relax.png',
+                iconData: Icons.play_circle,
+                iconText: 'Join Now',
               ),
             ],
           ),
