@@ -4,6 +4,8 @@
 //bottom app bar
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconly/iconly.dart';
 import 'package:mental_health_app/features/meditation/presentation/pages/pages.dart';
 
 class MainWraper extends StatefulWidget {
@@ -29,16 +31,82 @@ class _MainWraperState extends State<MainWraper> {
   }
 
   //top level Pages
-
   final List<Widget> topLevelPages = [MeditationScreen(), PlaylistScreen()];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _mainWrapperBody());
+    return Scaffold(
+      body: _mainWrapperBody(),
+      bottomNavigationBar: _bottomAppBar(context),
+    );
   }
 
   //main wraper body
   PageView _mainWrapperBody() {
     return PageView(controller: pageController, children: topLevelPages);
+  }
+
+  // Bottom Navigation Bar - MainWrapper Widget
+  BottomAppBar _bottomAppBar(BuildContext context) {
+    return BottomAppBar(
+      color: Colors.white,
+      elevation: 0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _bottomAppBarItem(
+            context,
+            defaultIcon: IconlyLight.home,
+            page: 0,
+            label: 'Home',
+            filledIcon: IconlyBold.home,
+          ),
+          _bottomAppBarItem(
+            context,
+            defaultIcon: IconlyLight.play,
+            page: 1,
+            label: 'Playlist',
+            filledIcon: IconlyBold.play,
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Bottom Navigation Bar Single item - MainWrapper Widget
+  Widget _bottomAppBarItem(
+    BuildContext context, {
+    required defaultIcon,
+    required page,
+    required label,
+    required filledIcon,
+  }) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(height: 10),
+            Icon(
+              0 == page ? filledIcon : defaultIcon,
+              color: 0 == page ? Colors.amber : Colors.grey,
+            ),
+            SizedBox(height: 3),
+            Text(
+              label,
+
+              style: GoogleFonts.aBeeZee(
+                fontSize: 13,
+                color: 0 == page ? Colors.amber : Colors.grey,
+                fontWeight: 0 == page ? FontWeight.w600 : FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

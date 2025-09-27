@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/theme.dart';
 import 'package:mental_health_app/features/meditation/presentation/pages/meditation_screen.dart';
+import 'package:mental_health_app/presentation/bottomnav/main_wraper.dart';
 import 'package:mental_health_app/presentation/onboarding/onboarding.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Mental Health App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: MeditationScreen(),
+      home: MainWraper(),
     );
   }
 }
