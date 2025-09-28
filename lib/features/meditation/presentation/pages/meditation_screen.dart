@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/core/theme.dart';
-import 'package:mental_health_app/features/meditation/presentation/common/feeling_card.dart';
-import 'package:mental_health_app/features/meditation/presentation/common/task_card.dart';
 import 'package:mental_health_app/features/meditation/presentation/widgets/feeling_section.dart';
 import 'package:mental_health_app/features/meditation/presentation/widgets/task_section.dart';
 

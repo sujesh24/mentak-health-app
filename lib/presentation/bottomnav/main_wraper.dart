@@ -38,7 +38,7 @@ class _MainWraperState extends State<MainWraper> {
   }
 
   //top level Pages
-  final List<Widget> topLevelPages = [MeditationScreen(), PlaylistScreen()];
+  final List<Widget> topLevelPages = [MeditationScreen(), MusicPlayerScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -100,8 +100,8 @@ class _MainWraperState extends State<MainWraper> {
 
         pageController.animateToPage(
           page,
-          duration: Duration(milliseconds: 10),
-          curve: Curves.fastLinearToSlowEaseIn,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
         );
       },
       child: Container(
