@@ -5,6 +5,15 @@ class PlaylistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('PlayList Screen'));
+    return const Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text('PlayList', style: TextStyle(color: Colors.black)),
+          ),
+        ],
+      ),
+    );
   }
 }

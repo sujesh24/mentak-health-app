@@ -4,9 +4,11 @@
 //bottom app bar
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 import 'package:mental_health_app/features/meditation/presentation/pages/pages.dart';
+import 'package:mental_health_app/presentation/bottomnav/bloc/bottom_nav_cubit.dart';
 
 class MainWraper extends StatefulWidget {
   const MainWraper({super.key});
@@ -30,6 +32,11 @@ class _MainWraperState extends State<MainWraper> {
     super.dispose();
   }
 
+  //method for onPageChanges
+  void onPageChanged(int page) {
+    BlocProvider.of<BottomNavCubit>(context).changeSelectedIndex(page);
+  }
+
   //top level Pages
   final List<Widget> topLevelPages = [MeditationScreen(), PlaylistScreen()];
 
@@ -43,7 +50,11 @@ class _MainWraperState extends State<MainWraper> {
 
   //main wraper body
   PageView _mainWrapperBody() {
-    return PageView(controller: pageController, children: topLevelPages);
+    return PageView(
+      onPageChanged: (page) => onPageChanged(page),
+      controller: pageController,
+      children: topLevelPages,
+    );
   }
 
   // Bottom Navigation Bar - MainWrapper Widget
@@ -82,8 +93,17 @@ class _MainWraperState extends State<MainWraper> {
     required label,
     required filledIcon,
   }) {
+    final isSelecetd = context.watch<BottomNavCubit>().state == page;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        BlocProvider.of<BottomNavCubit>(context).changeSelectedIndex(page);
+
+        pageController.animateToPage(
+          page,
+          duration: Duration(milliseconds: 10),
+          curve: Curves.fastLinearToSlowEaseIn,
+        );
+      },
       child: Container(
         color: Colors.transparent,
         child: Column(
@@ -91,8 +111,8 @@ class _MainWraperState extends State<MainWraper> {
           children: [
             SizedBox(height: 10),
             Icon(
-              0 == page ? filledIcon : defaultIcon,
-              color: 0 == page ? Colors.amber : Colors.grey,
+              isSelecetd ? filledIcon : defaultIcon,
+              color: isSelecetd ? Colors.amber : Colors.grey,
             ),
             SizedBox(height: 3),
             Text(
@@ -100,8 +120,8 @@ class _MainWraperState extends State<MainWraper> {
 
               style: GoogleFonts.aBeeZee(
                 fontSize: 13,
-                color: 0 == page ? Colors.amber : Colors.grey,
-                fontWeight: 0 == page ? FontWeight.w600 : FontWeight.w400,
+                color: isSelecetd ? Colors.amber : Colors.grey,
+                fontWeight: isSelecetd ? FontWeight.w600 : FontWeight.w400,
               ),
             ),
           ],
