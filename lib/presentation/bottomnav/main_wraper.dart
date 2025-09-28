@@ -34,6 +34,8 @@ class _MainWraperState extends State<MainWraper> {
 
   //method for onPageChanges
   void onPageChanged(int page) {
+    final currentstate = context.read<BottomNavCubit>().state;
+    if (currentstate != page) {}
     BlocProvider.of<BottomNavCubit>(context).changeSelectedIndex(page);
   }
 
@@ -112,7 +114,7 @@ class _MainWraperState extends State<MainWraper> {
             SizedBox(height: 10),
             Icon(
               isSelecetd ? filledIcon : defaultIcon,
-              color: isSelecetd ? Colors.amber : Colors.grey,
+              color: isSelecetd ? Colors.pinkAccent : Colors.grey,
             ),
             SizedBox(height: 3),
             Text(
@@ -120,7 +122,7 @@ class _MainWraperState extends State<MainWraper> {
 
               style: GoogleFonts.aBeeZee(
                 fontSize: 13,
-                color: isSelecetd ? Colors.amber : Colors.grey,
+                color: isSelecetd ? Colors.pinkAccent : Colors.grey,
                 fontWeight: isSelecetd ? FontWeight.w600 : FontWeight.w400,
               ),
             ),

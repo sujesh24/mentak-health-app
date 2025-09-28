@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       home: BlocProvider(
         create: (context) => BottomNavCubit(),
-        child: MainWraper(),
+        child: const MainWraper(),
       ),
     );
   }

@@ -16,82 +16,99 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.keyboard_arrow_down),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.keyboard_arrow_down),
+        ),
         elevation: 0,
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 40),
-        color: Colors.white,
+      body: SafeArea(
+        bottom: true,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 40),
+          color: Colors.white,
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Calming  Playlist',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Calming  Playlist',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
 
-            SizedBox(height: 20),
-            Image.asset(
-              'assets/images/illustration.png',
-              fit: BoxFit.cover,
-              height: screenHeight * 0.38,
-              width: double.infinity,
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: Text(
-                'Rain On Glass',
-                style: Theme.of(context).textTheme.labelLarge,
+              SizedBox(height: 20),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/images/illustration.png',
+                  fit: BoxFit.cover,
+                  height: screenHeight * 0.38,
+                  width: double.infinity,
+                ),
               ),
-            ),
-            Center(
-              child: Text(
-                'By: Painting with Passion',
-                style: Theme.of(context).textTheme.labelSmall,
+              SizedBox(height: 20),
+              Center(
+                child: Text(
+                  'Rain On Glass',
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
               ),
-            ),
-            Spacer(),
-            ProgressBar(
-              progress: Duration(milliseconds: 1000),
-              total: Duration(microseconds: 5000),
-              onSeek: (value) {
-                //todo
-              },
-              baseBarColor: DefaultColors.lightpink,
-              progressBarColor: DefaultColors.pink,
-              thumbColor: DefaultColors.pink,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.shuffle, color: DefaultColors.pink),
+              Center(
+                child: Text(
+                  'By: Painting with Passion',
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.skip_previous, color: DefaultColors.pink),
+              ),
+              Spacer(),
+              ProgressBar(
+                progress: Duration(milliseconds: 1000),
+                total: Duration(milliseconds: 5000),
+                onSeek: (value) {
+                  //todo
+                },
+                baseBarColor: DefaultColors.lightpink,
+                progressBarColor: DefaultColors.pink,
+                thumbColor: DefaultColors.pink,
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.shuffle, color: DefaultColors.pink),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.skip_previous,
+                        color: DefaultColors.pink,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.pause_circle,
+                        color: DefaultColors.pink,
+                        size: 75,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.skip_next, color: DefaultColors.pink),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.repeat, color: DefaultColors.pink),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.pause_circle,
-                    color: DefaultColors.pink,
-                    size: 75,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.skip_next, color: DefaultColors.pink),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.repeat, color: DefaultColors.pink),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
