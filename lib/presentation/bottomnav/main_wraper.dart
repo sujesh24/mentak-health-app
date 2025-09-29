@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 import 'package:mental_health_app/features/meditation/presentation/pages/pages.dart';
+import 'package:mental_health_app/features/music/presentation/pages/playlist_screen.dart';
 import 'package:mental_health_app/presentation/bottomnav/bloc/bottom_nav_cubit.dart';
 
 class MainWraper extends StatefulWidget {
@@ -40,7 +41,7 @@ class _MainWraperState extends State<MainWraper> {
   }
 
   //top level Pages
-  final List<Widget> topLevelPages = [MeditationScreen(), MusicPlayerScreen()];
+  final List<Widget> topLevelPages = [MeditationScreen(), PlaylistScreen()];
 
   @override
   Widget build(BuildContext context) {

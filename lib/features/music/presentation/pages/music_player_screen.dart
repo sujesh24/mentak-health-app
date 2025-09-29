@@ -1,6 +1,7 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/theme.dart';
+import 'package:mental_health_app/features/meditation/presentation/pages/meditation_screen.dart';
 
 class MusicPlayerScreen extends StatefulWidget {
   const MusicPlayerScreen({super.key});
@@ -17,9 +18,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.of(context).pop(),
           icon: Icon(Icons.keyboard_arrow_down),
         ),
         elevation: 0,

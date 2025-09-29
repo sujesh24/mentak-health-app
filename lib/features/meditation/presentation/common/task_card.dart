@@ -17,7 +17,6 @@ class TaskCard extends StatelessWidget {
     required this.iconText,
     required this.icon,
   });
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
